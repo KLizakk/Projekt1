@@ -1,0 +1,101 @@
+﻿<Window x:Class="PlayersS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlayersS"
+        mc:Ignorable="d"
+        Title="Players" Height="450" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.ColumnSpan="3">
+
+                <Menu>
+                    <MenuItem Header="File" FontSize="16" >
+                        <MenuItem Header="Zapisz" FontSize="16" Click="Save_Click"/>
+                        <MenuItem Header="Wczytaj" FontSize="16" Click="Wczytaj_Click"/>
+                    </MenuItem>
+
+                </Menu>
+                
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="4" >
+                <DataGrid x:Name="Tabela" IsReadOnly="True">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Turquoise"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <!-- header text and bindings-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="1*"/>
+                        <DataGridTextColumn Header="Nazwisko" Binding="{Binding firstname}" Width="3*"/>
+                        <DataGridTextColumn Header="Imię" Binding="{Binding lastname}" Width="3*" />
+                        <DataGridTextColumn Header="nba" Binding="{Binding nba}" Width="2*" />
+                        <DataGridTextColumn Header="Wzrost (m)" Binding="{Binding height}" Width="2*" />
+                        <DataGridTextColumn Header="Waga (kg)" Binding="{Binding weight}" Width="2*" />
+                        <DataGridTextColumn Header="College" Binding="{Binding college}" Width="2*" />
+                        <DataGridTextColumn Header="Pochodzenie" Binding="{Binding affiliation}" Width="2*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.RowSpan="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="Wprowadź nazwisko " FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox x:Name="WprowadzanieImienia" Grid.Row="1" Margin="5,0,5,0"  VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Grid.Row="2"  x:Name="SzukajZ" Content="Szukaj Zawodnika" FontSize="16" Click="SzukajZ_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock  Text="Wprowadź kraj " FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox  Grid.Row="1" x:Name="WprowadzenieKraju" Margin="5,0,5,0"  VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Grid.Row="2"   x:Name="SzukajK" Content="Szukaj kraju" FontSize="16" Click="SzukajK_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="0,10"  x:Name="PodajIlosc" Content="Ilość" FontSize="12" Click="PodajIlosc_Click" />
+                        <TextBlock Grid.Column="1" x:Name="IloscZawodnikow" Margin="10,10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                    </Grid>
+
+                    <Button Grid.Row="3" Margin="0,10,0,0"  x:Name="Exit" Content="Wyjście" FontSize="16" Click="Exit_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
